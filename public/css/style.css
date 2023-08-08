@@ -1,0 +1,9 @@
+.login-page{
+    text-align: center;
+    background-image:url(../img/login-background.jpg);
+    max-width: 100%;
+    height: full;;
+    /* padding-top: 16.5%;
+    padding-bottom: 16.5%; */
+    display:flex;
+}
