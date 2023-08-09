@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Auth;
 
 class checklog
 {
@@ -16,29 +15,7 @@ class checklog
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    { 
-        // dd($request->input());
-        if(Auth::user([
-            'email' => $email,
-            'password' => $password
-        ])){
-            return $next($request);
-        }
-        else{
-            return redirect()->route('login');
-        }
-        
+    {
+        return $next($request);
     }
-    // protected function redirectTo($request)
-    // {
-    //     if (! $request->expectsJson()) {
-    //         return route('login');
-    //     }
-    // }
-    // public function handle(Request $request, Closure $next){
-    //     if(Auth::user(
-        
-    //     return $next($request);
-
-    // }
 }

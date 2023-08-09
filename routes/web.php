@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\MenuController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Auth;
 use \App\Http\Controllers\admin\AdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,13 @@ Route::post('login/store',[LoginController::class,'store'])->name('store');
 // route::get('/','LoginController@index')->name('index');
 // route::post('login/store','LoginController@store')->name('store');
 Route::middleware(['checklog'])->group(function () {
-    Route::get('admin',[AdminController::class,'index'])->name('admin');
+    Route::prefix('admin')->group(function() {
+        Route::get('/',[AdminController::class,'index'])->name('admin');
+        Route::prefix('menus')->group(function() {
+            Route::get('add',[MenuController::class,'create'])->name('add');
+            Route::post('add',[MenuController::class,'store'])->name('create');
+            // Route::post('parent',[MenuController::class,'store'])->name('parent');
+        });
 
+    });
 });
