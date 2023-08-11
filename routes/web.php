@@ -28,6 +28,7 @@ Route::middleware(['checklog'])->group(function () {
         Route::prefix('menus')->group(function() {
             Route::get('add',[MenuController::class,'create'])->name('add');
             Route::post('add',[MenuController::class,'store'])->name('create');
+            Route::get('home',[MenuController::class,'index'])->name('home');
             // Route::post('parent',[MenuController::class,'store'])->name('parent');
         });
 

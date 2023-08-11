@@ -54,10 +54,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('add')}}" class="nav-link">
+            <a href="/admin/menus/home" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Layout Options
+                Hiển thì danh mục
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">6</span>
               </p>

@@ -12,12 +12,12 @@ class Menu extends Model
 {
     use HasFactory;
 
-    protected $fillabel =[
+    protected $fillable =[
         'name',
         'parent_id',
         'description',
         'content',
-        'slug',
+        // 'slug',
         'active',
     ];
 }
