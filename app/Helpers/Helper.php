@@ -5,21 +5,32 @@ namespace App\Helpers;
 class Helper
 {
     public static function menu($menus,$parent_id=0,$char=''){
+        // dd('$menu');
         $html='';
-        
         foreach ($menus as $key => $menu){
             if ($menu->parent_id == $parent_id) {
                 $html .= '
-                <th>'.$menu->id.'</th>
-                <th>'.$char.$menu->name.'</th>
-                <th>'.$menu->active.'</th>
-                <th>'.$menu->updated_at.'</th>
-                <th>&nbsp;</th>
+                    <tr>
+                        <td>'.$menu->id.'</td>
+                        <td>'.$char.$menu->name.'</td>
+                        <td>'.$menu->active.'</td>
+                        <td>'.$menu->updated_at.'</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="/admin/menus/edit/.$menu->id.">
+                                <i class="fas fa-edit">Chỉnh sửa</i>
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#" 
+                            onclick="removeRow('.$menu->id.',\'/admin/menus/delete\')">
+                                <i class="fas fa-trash">Xóa</i>
+                            </a>
+                        </td>
+                    </tr>
                 ';
                 unset($menu[$key]);
-                $html .= self::menu($menu,$menu->id,$char.'--');
+                $html .= self::menu($menus,$menu->id,$char.'|--');
             }
         }
+        
         return $html;
         // @endforeach
     }

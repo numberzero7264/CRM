@@ -9,5 +9,8 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('head')
+    
     <title>{{$title}}</title>
 </head>
