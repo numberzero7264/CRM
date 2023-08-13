@@ -9,6 +9,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\http\Service\menu\MenuService;
 use App\Helper\Helper;
+use \App\Models\Menu;
 
 class MenuController extends Controller
 {
@@ -30,6 +31,19 @@ class MenuController extends Controller
 
         return redirect()->back();
     }
+
+    public function edit(Menu $menu){
+        // dd($menu);
+        return view('menu.edit',[
+            'title' => 'Chỉnh sửa danh mục'.$menu->name,
+            'menu'=>$menu,
+            'menus'=>$this->menuservice->getParent()]);
+        
+    }
+    public function update(Menu $menu, CreateFormRequest $request){
+        $this->menuservice->update($menu, $request);
+        return redirect()->route('home');
+    }
     public function index(){
         // dd($this->menuservice->getall());
         return view('menu.Home',[
@@ -37,6 +51,7 @@ class MenuController extends Controller
             'menus'=>$this->menuservice->getAll()
         ]);    
     }
+
     public function destroy(Request $request):JsonResponse
     {        
         $result=$this->menuservice->destroy($request);

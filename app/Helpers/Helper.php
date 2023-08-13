@@ -1,6 +1,8 @@
 <?php
 namespace App\Helpers;
 
+use App\Http\Controllers\Admin\Menu;
+
 
 class Helper
 {
@@ -16,7 +18,7 @@ class Helper
                         <td>'.$menu->active.'</td>
                         <td>'.$menu->updated_at.'</td>
                         <td>
-                            <a class="btn btn-primary btn-sm" href="/admin/menus/edit/.$menu->id.">
+                            <a class="btn btn-primary btn-sm" href="/admin/menus/edit/'.$menu->id.'">
                                 <i class="fas fa-edit">Chỉnh sửa</i>
                             </a>
                             <a class="btn btn-danger btn-sm" href="#" 

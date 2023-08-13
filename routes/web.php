@@ -29,6 +29,8 @@ Route::middleware(['checklog'])->group(function () {
             Route::get('add',[MenuController::class,'create'])->name('add');
             Route::post('add',[MenuController::class,'store'])->name('create');
             Route::get('home',[MenuController::class,'index'])->name('home');
+            Route::get('edit/{menu}',[MenuController::class,'edit'])->name('edit');
+            Route::post('edit/{menu}',[MenuController::class,'update'])->name('update');
             Route::DELETE('delete',[MenuController::class,'destroy'])->name('delete');
             // Route::post('parent',[MenuController::class,'store'])->name('parent');
         });

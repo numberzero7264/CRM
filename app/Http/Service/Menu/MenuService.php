@@ -34,19 +34,34 @@ class MenuService
                 Session::flash('success','tạo danh mục thành công');
             // $data=$request->input();
 
-        }catch(\Exception $err){
-        
-        Session::flash('error',$err->getMessage());
-        return false;
-    }
-    return true;
-}   public function destroy($request){
-    $id= (int) $request->input('id');
-    $menu=Menu::where('id',$id)->first();
-    if($menu){
-        return Menu::where('id',$id)->orWhere('parent_id',$id)->delete();
+            }catch(\Exception $err)
+                {        
+                    Session::flash('error',$err->getMessage());
+                    return false;
+                }
+        return true;
 
+    }  
+    public function update($request, $menu):bool{
+        
+        $menu->name =(string)$request->input('name');
+        $menu->parent_id =(int)$request->input('parent_id');
+        $menu->description =(string)$request->input('description');
+        $menu->content =(string)$request->input('content');
+        $menu->active =(string)$request->input('active');
+        $menu->save();
+    
+        session::flash('success','cập nhật thành công danh mục');
+        return true;
     }
+    public function destroy($request){
+        $id= (int) $request->input('id');
+        $menu=Menu::where('id',$id)->first();
+        if($menu){
+            return Menu::where('id',$id)->orWhere('parent_id',$id)->delete();
+
+            }
     return false;
-}
+    }
+
 }

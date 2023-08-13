@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\Menu;
 
 class checklog
 {
@@ -18,4 +19,10 @@ class checklog
     {
         return $next($request);
     }
+    // public function redirectTo($request)
+    // {
+    //     if (! $request->expectsJson()) {
+    //         return route('login');
+    //     }
+    // }
 }
